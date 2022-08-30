@@ -23,10 +23,16 @@ batch=64
 train_dataloader=DataLoader(train_set,batch_size=batch,shuffle=True)
 
 # 客户端模型
-C=CNet().cuda()
+try:
+    C=torch.load("./Models/Client.pth").cuda()
+except:
+    C=CNet().cuda()
 
 # 服务端模型
-S=SNet().cuda()
+try:
+    S=torch.load("./Models/Server.pth").cuda()
+except:
+    S=SNet().cuda()
 
 # 损失函数
 criterion=nn.CrossEntropyLoss().cuda()
@@ -59,6 +65,8 @@ for _ in range(epoths):
         opt1.step()
         opt2.step()
     print("Average loss:",epoth_loss/batch)
+    torch.save(C,"./Models/Client.pth")
+    torch.save(S,"./Models/Server.pth")
 
 end_time=time()
 print("time cost:",end_time-start_time)
