@@ -33,7 +33,8 @@ try:
     S=torch.load("./Models/Server.pth").cuda()
 except:
     S=SNet().cuda()
-
+C.train()
+S.train()
 # 损失函数
 criterion=nn.CrossEntropyLoss().cuda()
 
@@ -43,7 +44,7 @@ opt2=torch.optim.SGD(S.parameters(),lr=0.02)
 
 # 训练过程
 start_time=time()
-epoths=100
+epoths=40
 
 for _ in range(epoths):
     print("epoth:",_+1,end=" ")
@@ -70,13 +71,3 @@ for _ in range(epoths):
 
 end_time=time()
 print("time cost:",end_time-start_time)
-
-# 测试集正确率
-test_dataloader=DataLoader(test_set,batch_size=1000,shuffle=True)
-correct=0
-for img,lab in test_dataloader:
-    img,lab=img.cuda(),lab.cuda()
-    output=S(C(img))
-    if torch.argmax(output)==lab:
-        correct+=1
-print("Model Accuracy =",correct/1000,"%")
