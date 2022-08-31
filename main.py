@@ -21,6 +21,7 @@ print("Test set:",test_set_size)
 # 加载数据
 batch=64
 train_dataloader=DataLoader(train_set,batch_size=batch,shuffle=True)
+test_dataloader=DataLoader(test_set,batch_size=batch,shuffle=True)
 
 # 客户端模型
 try:
