@@ -1,5 +1,4 @@
 # Split Learning测试过程
-from doctest import OutputChecker
 from random import randint
 import torch
 import torchvision
