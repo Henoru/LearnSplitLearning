@@ -38,10 +38,13 @@ Pridataloader=DataLoader(train_set,batch_size=batch,shuffle=True)
 # 训练F和invF
 optF=torch.optim.SGD(F.parameters(),lr=0.02)
 optinvF=torch.optim.SGD(invF.parameters(),lr=0.02)
-epoths=50
+epoths=40
 cri=nn.MSELoss()
 for _ in range(epoths):
-     for img,lab in Pubdataloader:
+    tot_loss=0
+    cnt=0
+    print("epoth:",_+1,end=" ")
+    for img,lab in Pubdataloader:
         img=img.cuda()
         optF.zero_grad()
         optinvF.zero_grad()
@@ -51,20 +54,24 @@ for _ in range(epoths):
         output2=invF(input2)
         # 计算损失函数和梯度
         loss=cri(output2,img)
+        tot_loss+=loss.item()
+        cnt+=1
         loss.backward()
         output1.backward(input2.grad)
         # 地图下降
         optF.step()
         optinvF.step()
-        torch.save(F,"./Models/F.pth")
-        torch.save(invF,"./Models/invF.pth")
-
+    print(tot_loss/cnt)
+    torch.save(F,"./Models/F.pth")
+    torch.save(invF,"./Models/invF.pth")
+    
 # 训练分类器
 epoths=50
 optD=torch.optim.SGD(D.parameters(),lr=0.02)
 cri=nn.CrossEntropyLoss()
 for _ in range(epoths):
-     for img,lab in Pubdataloader:
+    print("epoth:",_+1,end=" ")
+    for img,lab in Pubdataloader:
         img=img.cuda()
         optD.zero_grad()
         # 正向传播
@@ -78,14 +85,15 @@ for _ in range(epoths):
         loss.backward()
         # 梯度下降
         optD.step()
-        torch.save(D,"./Models/D.pth")
-
+    torch.save(D,"./Models/D.pth")
 # 特征空间劫持攻击
 epoths=50
 optC=torch.optim.SGD(C.parameters(),lr=0.02)
 cri=nn.CrossEntropyLoss()
 for _ in range(epoths):
-     for img,lab in Pridataloader:
+    tot_loss=0
+    print("epoth:",_+1,end=" ")
+    for img,lab in Pridataloader:
         img=img.cuda()
         optC.zero_grad()
         # 正向传播
@@ -98,4 +106,5 @@ for _ in range(epoths):
         output1.backward(input2.grad)
         # 梯度下降
         optC.step()
-        torch.save(C,"./Models/MClient.pth")
+    print(tot_loss/len(train_set))
+    torch.save(C,"./Models/MClient.pth")

@@ -66,7 +66,7 @@ for _ in range(epoths):
         #梯度下降
         opt1.step()
         opt2.step()
-    print("Average loss:",epoth_loss/batch)
+    print("Average loss:",epoth_loss/len(train_set))
     torch.save(C,"./Models/Client.pth")
     torch.save(S,"./Models/Server.pth")
 
