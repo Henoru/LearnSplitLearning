@@ -56,7 +56,7 @@ for _ in range(epochs):
         input1=Variable(output1.data,requires_grad=True)
         input2=Variable(output2.data,requires_grad=True)
         infer=invF(input1)
-        o1,o2=D(input1)+D(input2)
+        o1,o2=D(input1),D(input2)
         # 计算损失函数和梯度
         loss=cri1(infer,img)+cri2(o1,torch.ones(o1.shape[0],dtype=torch.long).cuda())+cri2(o2,torch.zeros(o2.shape[0],dtype=torch.long).cuda())
         tot_loss+=loss.item()
