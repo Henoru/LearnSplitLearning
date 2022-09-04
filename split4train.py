@@ -35,6 +35,7 @@ batch=64
 Pubdataloader=DataLoader(train_set,batch_size=batch,shuffle=True)
 Pridataloader=DataLoader(train_set,batch_size=batch,shuffle=True)
 # Setup Phase
+torch.save(C,"./Models/MClient.pth")
 optF=torch.optim.SGD(F.parameters(),lr=0.02)
 optinvF=torch.optim.SGD(invF.parameters(),lr=0.02)
 optD=torch.optim.SGD(D.parameters(),lr=0.02)
@@ -60,6 +61,7 @@ for _ in range(epochs):
         # 计算损失函数和梯度
         loss=cri1(infer,img)+cri2(o1,torch.ones(o1.shape[0],dtype=torch.long).cuda())+cri2(o2,torch.zeros(o2.shape[0],dtype=torch.long).cuda())
         tot_loss+=loss.item()
+        cnt+=1
         loss.backward()
         output1.backward(input1.grad)
         output2.backward(input2.grad)
