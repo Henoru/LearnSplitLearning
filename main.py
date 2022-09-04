@@ -45,11 +45,11 @@ opt2=torch.optim.SGD(S.parameters(),lr=0.02)
 
 # 训练过程
 start_time=time()
-epoths=40
+epochs=40
 
-for _ in range(epoths):
-    print("epoth:",_+1,end=" ")
-    epoth_loss=0
+for _ in range(epochs):
+    print("epoch:",_+1,end=" ")
+    epoch_loss=0
     for img,lab in train_dataloader:
         img,lab=img.cuda(),lab.cuda()
         opt1.zero_grad()
@@ -60,13 +60,13 @@ for _ in range(epoths):
         output2=S(input2)
         # 计算损失函数和梯度
         loss=criterion(output2,lab)
-        epoth_loss+=loss.item()
+        epoch_loss+=loss.item()
         loss.backward()
         output1.backward(input2.grad)
         #梯度下降
         opt1.step()
         opt2.step()
-    print("Average loss:",epoth_loss/len(train_set))
+    print("Average loss:",epoch_loss/len(train_set))
     torch.save(C,"./Models/Client.pth")
     torch.save(S,"./Models/Server.pth")
 

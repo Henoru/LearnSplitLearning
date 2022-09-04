@@ -1,0 +1,80 @@
+absl-py @ file:///opt/conda/conda-bld/absl-py_1639803114343/work
+aiohttp @ file:///C:/ci/aiohttp_1646806581161/work
+aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
+asttokens @ file:///opt/conda/conda-bld/asttokens_1646925590279/work
+async-timeout @ file:///tmp/build/80754af9/async-timeout_1637851218186/work
+attrs @ file:///opt/conda/conda-bld/attrs_1642510447205/work
+backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
+blinker==1.4
+brotlipy==0.7.0
+cachetools @ file:///tmp/build/80754af9/cachetools_1619597386817/work
+certifi @ file:///C:/Windows/TEMP/abs_e9b7158a-aa56-4a5b-87b6-c00d295b01fanefpc8_o/croots/recipe/certifi_1655968940823/work/certifi
+cffi @ file:///C:/Windows/Temp/abs_6808y9x40v/croots/recipe/cffi_1659598653989/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///C:/ci/click_1646056762388/work
+colorama @ file:///C:/Windows/TEMP/abs_9439aeb1-0254-449a-96f7-33ab5eb17fc8apleb4yn/croots/recipe/colorama_1657009099097/work
+cryptography @ file:///C:/ci/cryptography_1652101729823/work
+debugpy @ file:///C:/ci_310/debugpy_1642079916595/work
+decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work
+entrypoints @ file:///C:/ci/entrypoints_1649926676279/work
+executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
+frozenlist @ file:///C:/ci_310/frozenlist_1642081127310/work
+google-auth @ file:///opt/conda/conda-bld/google-auth_1646735974934/work
+google-auth-oauthlib @ file:///tmp/build/80754af9/google-auth-oauthlib_1617120569401/work
+grpcio @ file:///C:/ci/grpcio_1655475084232/work
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+importlib-metadata @ file:///C:/ci/importlib-metadata_1648544469310/work
+ipykernel @ file:///C:/ci/ipykernel_1647000977835/work/dist/ipykernel-6.9.1-py3-none-any.whl
+ipython @ file:///C:/ci/ipython_1657652608590/work
+jedi @ file:///C:/ci/jedi_1644315428305/work
+jupyter-core @ file:///C:/ci/jupyter_core_1651638076360/work
+jupyter_client @ file:///C:/ci/jupyter_client_1661834530766/work
+Markdown @ file:///C:/ci_310/markdown_1642083972652/work
+matplotlib-inline @ file:///C:/ci/matplotlib-inline_1661934094726/work
+mkl-fft==1.3.1
+mkl-random @ file:///C:/ci_310/mkl_random_1643050563308/work
+mkl-service==2.4.0
+multidict @ file:///C:/ci_310/multidict_1642084365325/work
+nest-asyncio @ file:///C:/ci/nest-asyncio_1649848132512/work
+numpy @ file:///C:/Windows/Temp/abs_2a1e1vbeag/croots/recipe/numpy_and_numpy_base_1659432712056/work
+oauthlib @ file:///tmp/abs_08ngfezid4/croots/recipe/oauthlib_1659642459222/work
+pandas==1.4.4
+parso @ file:///opt/conda/conda-bld/parso_1641458642106/work
+pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
+Pillow==9.2.0
+prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1633440160888/work
+protobuf==3.20.1
+pure-eval @ file:///opt/conda/conda-bld/pure_eval_1646925070566/work
+pyasn1 @ file:///Users/ktietz/demo/mc3/conda-bld/pyasn1_1629708007385/work
+pyasn1-modules==0.2.8
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+Pygments @ file:///opt/conda/conda-bld/pygments_1644249106324/work
+PyJWT @ file:///C:/ci/pyjwt_1657529477795/work
+pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
+PySocks @ file:///C:/ci_310/pysocks_1642089375450/work
+python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+pytz==2022.2.1
+pywin32==302
+pyzmq @ file:///C:/ci/pyzmq_1657616000714/work
+requests @ file:///C:/ci/requests_1657735340829/work
+requests-oauthlib==1.3.0
+rsa @ file:///tmp/build/80754af9/rsa_1614366226499/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
+tensorboard @ file:///C:/Users/builder/adipietro/mc3/tf_env/conda-bld/tensorboard_1661810458182/work/tensorboard-2.9.0-py3-none-any.whl
+tensorboard-data-server @ file:///C:/ci_310/tensorboard-data-server_1642092670778/work/tensorboard_data_server-0.6.0-py3-none-any.whl
+tensorboard-plugin-wit @ file:///C:/tf/b/tensorboard-plugin-wit_1660162132996/work/tensorboard_plugin_wit-1.8.1-py3-none-any.whl
+torch==1.12.1
+torch-tb-profiler==0.4.0
+torchaudio==0.12.1
+torchvision==0.13.1
+tornado @ file:///C:/ci_310/tornado_1642093111997/work
+traitlets @ file:///tmp/build/80754af9/traitlets_1636710298902/work
+typing_extensions @ file:///C:/Windows/TEMP/abs_dd2d0moa85/croots/recipe/typing_extensions_1659638831135/work
+urllib3 @ file:///C:/Windows/TEMP/abs_65ynz4fdmi/croots/recipe/urllib3_1659110473919/work
+wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
+Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work
+win-inet-pton @ file:///C:/ci_310/win_inet_pton_1642658466512/work
+wincertstore==0.2
+yarl @ file:///C:/Users/BUILDE~1/AppData/Local/Temp/abs_e5nlunspj6/croots/recipe/yarl_1661437086516/work
+zipp @ file:///C:/ci/zipp_1652255909324/work
