@@ -1,3 +1,4 @@
+from os import system
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -39,7 +40,8 @@ torch.save(C,"./Models/MClient.pth")
 optF=torch.optim.SGD(F.parameters(),lr=0.02)
 optinvF=torch.optim.SGD(invF.parameters(),lr=0.02)
 optD=torch.optim.SGD(D.parameters(),lr=0.02)
-epochs=100
+optC=torch.optim.SGD(C.parameters(),lr=0.02)
+epochs=200
 cri1=nn.MSELoss()
 cri2=nn.CrossEntropyLoss()
 for _ in range(epochs):
@@ -51,6 +53,7 @@ for _ in range(epochs):
         optF.zero_grad()
         optinvF.zero_grad()
         optD.zero_grad()
+        optC.zero_grad()
         # 正向传播
         output1=F(img)
         output2=C(img)
@@ -58,13 +61,17 @@ for _ in range(epochs):
         input2=Variable(output2.data,requires_grad=True)
         infer=invF(input1)
         o1,o2=D(input1),D(input2)
+        loss2=cri2(o2,torch.ones(o2.shape[0],dtype=torch.long).cuda())
+        loss2.backward(retain_graph=True)
+        output2.backward(input2.grad)
+        optC.step()
+        optD.zero_grad()
         # 计算损失函数和梯度
         loss=cri1(infer,img)+cri2(o1,torch.ones(o1.shape[0],dtype=torch.long).cuda())+cri2(o2,torch.zeros(o2.shape[0],dtype=torch.long).cuda())
-        tot_loss+=loss.item()
+        tot_loss+=loss.item()+loss2.item()
         cnt+=1
         loss.backward()
         output1.backward(input1.grad)
-        output2.backward(input2.grad)
         # 地图下降
         optF.step()
         optinvF.step()
@@ -73,29 +80,4 @@ for _ in range(epochs):
     torch.save(F,"./Models/F.pth")
     torch.save(invF,"./Models/invF.pth")
     torch.save(D,"./Models/D.pth")
-    
-# Client’s training procedure
-epochs=100
-optC=torch.optim.SGD(C.parameters(),lr=0.02)
-cri=nn.CrossEntropyLoss()
-for _ in range(epochs):
-    tot_loss=0
-    cnt=0
-    print("epoch:",_+1,end=" ")
-    for img,lab in Pridataloader:
-        img=img.cuda()
-        optC.zero_grad()
-        # 正向传播
-        output1=C(img)
-        input2=Variable(output1.data,requires_grad=True)
-        o1=D(input2)
-        # 计算损失函数和梯度
-        loss=cri(o1,torch.ones(o1.shape[0],dtype=torch.long).cuda())
-        tot_loss+=loss.item()
-        cnt+=1
-        loss.backward()
-        output1.backward(input2.grad)
-        # 梯度下降
-        optC.step()
-    print(tot_loss/cnt)
     torch.save(C,"./Models/MClient.pth")
